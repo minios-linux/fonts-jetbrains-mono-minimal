@@ -1,0 +1,2 @@
+Prebuilt fonts from upstream are removed from the source package in order to
+reduce its size, as they are not used because they are rebuilt from source.

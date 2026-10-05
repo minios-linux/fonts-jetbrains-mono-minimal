@@ -1,0 +1,7 @@
+sources/*.gen/
+sources/*.ufo_master/
+sources/*.ufo_instance/
+fonts/
+instance_ufo/
+master_ufo/
+scripts/GenerateNLVersion.jar

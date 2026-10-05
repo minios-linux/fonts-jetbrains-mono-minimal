@@ -1,0 +1,3 @@
+0001-Do-not-build-OTF-files.patch
+0002-use-system-ttfautohint.patch
+0003-scripts-GenerateNLVersion.kt-use-SOURCE_DATE_EPOCH-f.patch

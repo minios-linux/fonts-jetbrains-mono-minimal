@@ -1,0 +1,16 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@
+
+# Package the unchanged Debian 13 TTFs from the desktop source component.
+override_dh_auto_configure:
+
+override_dh_auto_build:
+
+override_dh_auto_install:
+
+override_dh_auto_clean:
+
+override_dh_auto_test:
+	python3 debian/check-fonts.py desktop JetBrainsMono ttf

@@ -1,0 +1,20 @@
+Source: fonts-jetbrains-mono-minimal
+Section: fonts
+Priority: optional
+Maintainer: crims0n <crims0n@minios.dev>
+Build-Depends: debhelper (>= 11), python3-fonttools
+Standards-Version: 4.7.2
+Rules-Requires-Root: no
+Homepage: https://www.jetbrains.com/lp/mono/
+
+Package: fonts-jetbrains-mono-minimal
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends}
+Conflicts: fonts-jetbrains-mono
+Replaces: fonts-jetbrains-mono
+Description: JetBrains Mono desktop fonts in four essential styles
+ JetBrains Mono is a monospaced typeface for terminals and source code.
+ This minimal package contains Regular, Bold, Italic and Bold Italic
+ hinted TrueType fonts, with complete original character coverage.
+ Additional weights, the NL family and web fonts are omitted.

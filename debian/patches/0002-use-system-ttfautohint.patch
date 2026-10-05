@@ -1,0 +1,22 @@
+From: Agathe Porte <gagath@debian.org>
+Date: Sun, 23 Apr 2023 10:47:30 +0200
+Subject: use system ttfautohint
+
+Forwarded: not-needed
+---
+ sources/old-build-scripts/build-statics.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sources/old-build-scripts/build-statics.sh b/sources/old-build-scripts/build-statics.sh
+index af5c547..48704c5 100755
+--- a/sources/old-build-scripts/build-statics.sh
++++ b/sources/old-build-scripts/build-statics.sh
+@@ -32,7 +32,7 @@ ttfs=$(ls $TT_DIR/*.ttf)
+ for font in $ttfs
+ do
+ 	gftools fix-dsig --autofix $font
+-	python -m ttfautohint $font $font.fix
++	ttfautohint $font $font.fix
+ 	[ -f $font.fix ] && mv $font.fix $font
+ 	gftools fix-hinting $font
+ 	[ -f $font.fix ] && mv $font.fix $font

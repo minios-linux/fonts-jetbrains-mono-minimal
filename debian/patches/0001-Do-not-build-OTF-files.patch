@@ -1,0 +1,63 @@
+From: Agathe Porte <gagath@debian.org>
+Date: Sun, 23 Apr 2023 10:46:21 +0200
+Subject: Do not build OTF files
+
+Forwarded: not-needed
+---
+ sources/old-build-scripts/build-statics.sh | 22 ++--------------------
+ 1 file changed, 2 insertions(+), 20 deletions(-)
+
+diff --git a/sources/old-build-scripts/build-statics.sh b/sources/old-build-scripts/build-statics.sh
+index 82a9df7..af5c547 100755
+--- a/sources/old-build-scripts/build-statics.sh
++++ b/sources/old-build-scripts/build-statics.sh
+@@ -4,7 +4,6 @@ set -e
+ 
+ thisFont="JetBrainsMono"  #must match the name in the font file
+ TT_DIR=./fonts/ttf
+-OT_DIR=./fonts/otf
+ 
+ #Generating fonts ==========================================================
+ #Requires fontmake https://github.com/googlefonts/fontmake
+@@ -12,8 +11,8 @@ OT_DIR=./fonts/otf
+ echo ".
+ CLEAN FONTS FOLDERS
+ ."
+-rm -rf $TT_DIR $OT_DIR
+-mkdir -p $TT_DIR $OT_DIR
++rm -rf $TT_DIR
++mkdir -p $TT_DIR
+ 
+ echo ".
+ GENERATING STATIC TTF
+@@ -21,11 +20,6 @@ GENERATING STATIC TTF
+ fontmake -g ./sources/$thisFont.glyphs -i -o ttf --output-dir $TT_DIR
+ fontmake -g ./sources/$thisFont-Italic.glyphs -i -o ttf --output-dir $TT_DIR
+ 
+-echo ".
+-GENERATING STATIC OTF
+-."
+-fontmake -g ./sources/$thisFont.glyphs -i -o otf --output-dir $OT_DIR
+-fontmake -g ./sources/$thisFont-Italic.glyphs -i -o otf --output-dir $OT_DIR
+ 
+ #Post-processing fonts ======================================================
+ #Requires gftools https://github.com/googlefonts/gftools
+@@ -44,18 +38,6 @@ do
+ 	[ -f $font.fix ] && mv $font.fix $font
+ done
+ 
+-echo ".
+-POST-PROCESSING OTF
+-."
+-otfs=$(ls $OT_DIR/*.otf)
+-for font in $otfs
+-do
+-	gftools fix-dsig --autofix $font
+-	gftools fix-weightclass $font
+-	[ -f $font.fix ] && mv $font.fix $font
+-done
+-
+-
+ rm -rf master_ufo/ instance_ufo/
+ 
+ 
